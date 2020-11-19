@@ -1,0 +1,43 @@
+@page
+@model IndexModel
+@{
+    var i = 1;
+    var EsAdmin = User.IsInRole("Admin");
+}
+<h2>Futbolistas</h2>
+<div class="row">
+    <a asp-page="./Crear" role="button" class="btn btn-success">Crear</a>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Equipo</th>
+      <th scope="col">Edad</th>
+      <th scope="col">Precio</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var al in Model.futbolistas)
+    {
+      
+    <tr>
+    
+      <td>@al.Nombre</td>
+      <td>@al.Equipo</td>
+      <td>@al.Edad</td>
+      <td>@al.Precio</td>
+
+      <td><a asp-page="./Detalles" asp-route-id="@al.Id" class="btn btn-info">Detalles </a>
+      <a asp-page="./Editar" asp-route-id="@al.Id" class="btn btn-info">Editar </a>
+      @if(EsAdmin){
+      <a asp-page="./Borrar" asp-route-id="@al.Id" class="btn btn-warning">Borrar </a>
+      }
+      </td>
+    </tr>
+        i++;
+    }
+   
+  </tbody>
+</table>

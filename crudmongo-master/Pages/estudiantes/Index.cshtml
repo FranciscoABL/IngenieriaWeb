@@ -1,0 +1,49 @@
+@page
+@model IndexModel
+@{
+    var i = 1;
+    var EsAdmin = User.IsInRole("Admin");
+}
+<h2>Estudiantes</h2>
+<div class="row">
+    <a asp-page="./Crear" role="button" class="btn btn-success">Crear</a>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Numero Control</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Carrera</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var al in Model.Estudiantes)
+    {
+      var foto = al.FotoURL;
+    <tr>
+      <th scope="row">
+        @if(!string.IsNullOrWhiteSpace(foto)) {
+        <img  class="img-thumbnail" src="@foto" alt='estudiante'/>
+        }else{
+          <p>Sin foto</p>
+        }
+
+         </th>
+      <td>@al.NumeroControl</td>
+      <td>@al.Nombre</td>
+      <td>@al.Carrera</td>
+      <td><a asp-page="./Detalles" asp-route-nc="@al.NumeroControl" class="btn btn-info">Detalles </a>
+      <a asp-page="./Editar" asp-route-nc="@al.NumeroControl" class="btn btn-info">Editar </a>
+      <a asp-page="./Calificar" asp-route-nc="@al.NumeroControl" class="btn btn-info">Calificar </a>
+      @if(EsAdmin){
+      <a asp-page="./Borrar" asp-route-nc="@al.NumeroControl" class="btn btn-warning">Borrar </a>
+      }
+      </td>
+    </tr>
+        i++;
+    }
+   
+  </tbody>
+</table>

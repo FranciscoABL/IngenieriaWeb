@@ -1,0 +1,36 @@
+@page
+@model CalificarModel
+
+<h1>Calificar </h1>
+
+<div asp-validation-summary="All"></div>
+<form method="POST">
+  <div class="form-group">
+    <label for="NumeroControl">Numero Control</label>
+    <input type="hidden" name="NumeroControl" class="form-control"
+         id="NumeroControl" aria-describedby="" value="@Model.Detalle.NumeroControl">
+   <span>@Model.Detalle.NumeroControl</span>
+    
+  </div>
+  <div class="form-group">
+    <label for="Nombre">Nombre</label>
+   <span>@Model.Detalle.Nombre</span>
+        @* <input asp-for="NuevoEstudiante.Nombre" /> *@
+    
+  </div>
+  <div class="form-group">
+    <label for="Carrera">Carrera</label>
+   <span>@Model.Detalle.Carrera</span>
+    
+  </div>
+
+  <div class="form-group">
+    <label for="Promedio">Promedio</label>
+    <input type="text" class="form-control"
+        name="Promedio" id="Promedio" Value="@Model.Detalle.Promedio" aria-describedby="">
+    
+  </div>
+  
+  <a asp-page="./Index" class="btn btn-info">Regresar</a>
+  <button type="submit" class="btn btn-primary">Calificar</button>
+</form>

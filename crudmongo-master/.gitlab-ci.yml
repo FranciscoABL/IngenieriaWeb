@@ -1,0 +1,17 @@
+stages:
+    - build
+    - publish
+
+build:
+    stage: build
+    script:
+        - echo "Hello Pipelines"
+        - docker build -t  $CI_REGISTRY_IMAGE/$CI_COMMIT_BRANCH/aspnetdemo:$CI_PIPELINE_ID .
+
+publish_to_registry:
+    stage: publish
+    script:
+        - echo "Subiendo Imagen"
+        - echo $CI_BUILD_TOKEN
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+        - docker push $CI_REGISTRY_IMAGE/$CI_COMMIT_BRANCH/aspnetdemo:$CI_PIPELINE_ID

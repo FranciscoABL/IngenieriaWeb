@@ -1,0 +1,13 @@
+@page
+@{
+    var nombre = "jorge";
+}
+<h1>
+    Esto es una pagina nueva
+</h1>
+<ol class='list'>
+@for(var i = 0; i <= 10; i++){
+    <li class='list-item'>Elemento @i @nombre </li>
+    nombre = nombre + " .... ";
+}
+</ol>

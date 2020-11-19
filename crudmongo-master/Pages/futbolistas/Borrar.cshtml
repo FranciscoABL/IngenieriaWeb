@@ -1,0 +1,16 @@
+@page
+@model BorrarModel
+
+<h1>Seguro que quieres borrar a @Model.Detalle.Nombre </h1>
+
+<form method="POST">
+
+    <input type="hidden" name="Id" class="form-control"
+         id="Id" aria-describedby="" value="@Model.Detalle.Id">
+
+    
+
+  
+  <a asp-page="./Index" class="btn btn-info">Regresar</a>
+  <button type="submit" class="btn btn-primary">Borrar</button>
+</form>
