@@ -1,0 +1,29 @@
+@page
+@model CrearModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1> Crear Una silla </h1>
+
+<div asp-validation-summary="All"></div>
+<form method="POST">
+  <div class="form-group">
+    <label for="NumeroDePatas">NumeroDePatas</label>
+    <input type="text" asp-for="NumeroDePatas" class="form-control"
+         id="NumeroDePatas" aria-describedby="">
+    <span asp-validation-for="NumeroDePatas"></span>
+  </div>
+  <div class="form-group">
+    <label for="TipoDeMaterial">TipoDeMaterial</label>
+    <input type="text"asp-for="TipoDeMaterial" class="form-control"
+                id="TipoDeMaterial" aria-describedby="">
+         <span asp-validation-for="TipoDeMaterial"></span>
+    
+  </div>
+
+  <div class="form-group">
+    <label for="DescansaBrazo"> ¿Con Descansa Brazo?</label><br>
+    <input type="checkbox" class="form-control" value="true"
+        name="DescansaBrazo" id="DescansaBrazo" aria-describedby="">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Crear</button>
+</form>

@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
-using aspnetdemo2.domain.futbolistas;
+using aspnetdemo2.domain.libros;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace aspnetdemo2.Pages.futbolistas
+namespace aspnetdemo2.Pages.libros
 {
 
     public class CrearModel : PageModel
@@ -20,10 +20,8 @@ namespace aspnetdemo2.Pages.futbolistas
         private readonly UserManager<IdentityUser> userManager;
         private readonly IMediator mediator;
        
-        
-        public string Nombre { get; set; }
-        public string Equipo{ get;set; }
-        public int Edad { get; set; }
+        public string Titulo { get; set; }
+        public string Genero{ get;set; }
         public float Precio { get; set; }
 
         public CrearModel(ILogger<CrearModel> logger,
@@ -41,20 +39,17 @@ namespace aspnetdemo2.Pages.futbolistas
             
         }
 
-         public async Task<IActionResult> OnPost(CrearFutbolistaCommand cmd ){
+        public async Task<IActionResult> OnPost(CrearLibroCommand cmd ){
             //do nothing
-
             if(!ModelState.IsValid){
-                Nombre = cmd.Nombre;
-                Equipo = cmd.Equipo;
-                Edad=cmd.Edad;
+                Titulo = cmd.Titulo;
+                Genero = cmd.Genero;
                 Precio=cmd.Precio;
                 
                 return Page();
             }
-           
             var res = await  mediator.Send(cmd);
-    
+            //Crear nuevo libro     
             return RedirectToPage("./Index");
 
         }

@@ -1,0 +1,36 @@
+@page
+@model EditarModel
+<h1>Editar </h1>
+
+<form method="POST" enctype="multipart/form-data"  >
+  <div class="form-group" style="display: none;">
+    <input type="hidden" name="Id" class="form-control"
+         id="Id" aria-describedby="" value="@Model.Detalle.Id">
+   <span>@Model.Detalle.Id</span>
+    
+  </div>
+  <div class="form-group">
+    <label for="NumeroDePatas">NumeroDePatas</label>
+    <input type="text" name="NumeroDePatas" class="form-control"
+         id="NumeroDePatas" aria-describedby="" value="@Model.Detalle.NumeroDePatas">
+        @* <input asp-for="NuevoEstudiante.Nombre" /> *@
+    
+  </div>
+  <div class="form-group">
+    <label for="TipoDeMaterial">TipoDeMaterial</label>
+    <input type="text" class="form-control"
+        name="TipoDeMaterial" id="TipoDeMaterial" aria-describedby="" value="@Model.Detalle.TipoDeMaterial">
+    
+  </div>
+
+
+    <div class="form-group">
+    <label for="DescansaBrazo"> ¿Con Descansa Brazo?</label><br>
+    <input type="checkbox" class="form-control" checked="@Model.Detalle.DescansaBrazo"
+        name="DescansaBrazo" id="DescansaBrazo" aria-describedby="" value="true">
+        
+ </div>
+
+  <a asp-page="./Index" class="btn btn-info">Regresar</a>
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>

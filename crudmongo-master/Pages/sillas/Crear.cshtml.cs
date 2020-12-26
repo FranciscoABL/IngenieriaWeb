@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
-using aspnetdemo2.domain.futbolistas;
+using aspnetdemo2.domain.sillas;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace aspnetdemo2.Pages.futbolistas
+namespace aspnetdemo2.Pages.sillas
 {
 
     public class CrearModel : PageModel
@@ -20,11 +20,9 @@ namespace aspnetdemo2.Pages.futbolistas
         private readonly UserManager<IdentityUser> userManager;
         private readonly IMediator mediator;
        
-        
-        public string Nombre { get; set; }
-        public string Equipo{ get;set; }
-        public int Edad { get; set; }
-        public float Precio { get; set; }
+        public int NumeroDePatas { get; set; }
+        public string TipoDeMaterial{ get;set; }
+        public bool DescansaBrazo { get; set; }
 
         public CrearModel(ILogger<CrearModel> logger,
         UserManager<IdentityUser> userManager,
@@ -41,20 +39,15 @@ namespace aspnetdemo2.Pages.futbolistas
             
         }
 
-         public async Task<IActionResult> OnPost(CrearFutbolistaCommand cmd ){
+        public async Task<IActionResult> OnPost(CrearSillaCommand cmd ){
             //do nothing
-
             if(!ModelState.IsValid){
-                Nombre = cmd.Nombre;
-                Equipo = cmd.Equipo;
-                Edad=cmd.Edad;
-                Precio=cmd.Precio;
-                
+                NumeroDePatas = cmd.NumeroDePatas;
+                TipoDeMaterial = cmd.TipoDeMaterial;                
                 return Page();
             }
-           
             var res = await  mediator.Send(cmd);
-    
+            //Crear nuevo Silla     
             return RedirectToPage("./Index");
 
         }

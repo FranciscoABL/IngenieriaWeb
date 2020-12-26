@@ -1,0 +1,30 @@
+@page
+@model CrearModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1> Crear Un Libro </h1>
+
+<div asp-validation-summary="All"></div>
+<form method="POST">
+  <div class="form-group">
+    <label for="Titulo">Titulo</label>
+    <input type="text" asp-for="Titulo" class="form-control"
+         id="Titulo" aria-describedby="">
+    <span asp-validation-for="Titulo"></span>
+  </div>
+  <div class="form-group">
+    <label for="Genero">Genero</label>
+    <input type="text"asp-for="Genero" class="form-control"
+          aria-describedby="">
+         <span asp-validation-for="Genero"></span>
+    
+  </div>
+
+  <div class="form-group">
+    <label for="Precio">Precio</label>
+    <input type="text" class="form-control"
+        name="Precio" id="Precio" aria-describedby="">
+    
+  </div>
+
+  <button type="submit" class="btn btn-primary">Crear</button>
+</form>

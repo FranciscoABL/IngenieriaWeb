@@ -1,0 +1,30 @@
+@page
+@model EditarModel
+
+<h1>Detalles </h1>
+
+<form method="POST" enctype="multipart/form-data"  >
+  
+  <div class="form-group">
+    <label for="Nombre">Nombre</label>
+    <input type="text" name="Nombre" class="form-control"
+         id="Nombre" aria-describedby="" value="@Model.Detalle.Nombre">
+        @* <input asp-for="NuevoEstudiante.Nombre" /> *@
+    
+  </div>
+  <div class="form-group">
+    <label for="Marca">Marca</label>
+    <input type="text" class="form-control"
+        name="Marca" id="Marca" aria-describedby="" value="@Model.Detalle.Marca">
+    
+  </div>
+
+  <div class="form-group">
+    <label for="Etapa">Etapa</label>
+    <input type="text" class="form-control"
+        name="Etapa" id="Etapa" aria-describedby="" value="@Model.Detalle.Etapa">
+  </div>
+  
+  <a asp-page="./Index" class="btn btn-info">Regresar</a>
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>

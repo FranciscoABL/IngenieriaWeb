@@ -6,25 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
-using aspnetdemo2.domain.futbolistas;
+using aspnetdemo2.domain.leches;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace aspnetdemo2.Pages.futbolistas
+namespace aspnetdemo2.Pages.leches
 {
-
     public class CrearModel : PageModel
     {
 
-   private readonly ILogger<CrearModel> _logger;
+        private readonly ILogger<CrearModel> _logger;
         private readonly UserManager<IdentityUser> userManager;
         private readonly IMediator mediator;
        
-        
-        public string Nombre { get; set; }
-        public string Equipo{ get;set; }
-        public int Edad { get; set; }
-        public float Precio { get; set; }
+        public string Id { get; set; }
+        public string Nombre{ get; set; }  
+        public string Marca { get; set; }
+        public int Etapa  { get; set; }
+
 
         public CrearModel(ILogger<CrearModel> logger,
         UserManager<IdentityUser> userManager,
@@ -41,24 +40,23 @@ namespace aspnetdemo2.Pages.futbolistas
             
         }
 
-         public async Task<IActionResult> OnPost(CrearFutbolistaCommand cmd ){
+        public async Task<IActionResult> OnPost(CrearLecheCommand cmd ){
             //do nothing
 
             if(!ModelState.IsValid){
                 Nombre = cmd.Nombre;
-                Equipo = cmd.Equipo;
-                Edad=cmd.Edad;
-                Precio=cmd.Precio;
-                
+                Marca = cmd.Marca;
+                Etapa = cmd.Etapa;
                 return Page();
             }
+
            
             var res = await  mediator.Send(cmd);
-    
+            //Crear nueva leche
+            
             return RedirectToPage("./Index");
-
         }
+
     }
 }
 
-    

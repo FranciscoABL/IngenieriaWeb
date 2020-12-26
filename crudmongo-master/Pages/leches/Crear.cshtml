@@ -1,0 +1,32 @@
+@page
+@model CrearModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1> Crear una Leche </h1>
+
+<div asp-validation-summary="All"></div>
+<form method="POST">
+  <div class="form-group">
+    <label for="Nombre">Nombre</label>
+    <input type="text"asp-for="Nombre" class="form-control"
+          aria-describedby="">
+         <span asp-validation-for="Nombre"></span>
+    
+  </div>
+  <div class="form-group">
+    <label for="Marca">Marca</label>
+    <input type="text" class="form-control"
+        name="Marca" id="Marca" aria-describedby="">
+        <span asp-validation-for="Marca"></span>
+    
+  </div>
+  <div class="form-group">
+    <label for="Etapa">Etapa</label>
+    <input type="text" class="form-control"
+        name="Etapa" id="Etapa" aria-describedby="">
+        <span asp-validation-for="Etapa"></span>
+    
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Crear</button>
+</form>
